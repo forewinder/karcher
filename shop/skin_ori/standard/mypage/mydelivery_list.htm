@@ -1,0 +1,80 @@
+{*** 나의 배송지 관리 목록 | mypage/mydelivery.php ***}
+
+<form  name="form" method="post" action="mydelivery_indb.php">
+<input type="hidden" name="mode" value="{mode}" />
+<input type="hidden" name="pkind" value="{pkind}" />
+<div class="delivery_div">
+	<div id="deliveryList" class="delivery_list">
+		<div class="dtitle"><img src="../img/common/title_address.png" title="나의 배송지 관리" /></div>
+		<div class="path mydtit">HOME &gt; 마이페이지 &gt; <span class="bold">나의 배송지 관리</span></div>
+		<div class="dcontents">
+			<div class="contents_left">
+				배송을 원하는 주소를 선택하시면 주문서에 자동 입력됩니다.<br />
+				배송지는 <span class="bold">최대 10개</span>까지 등록이 가능합니다.
+			</div>
+			<div class="btn_right">
+				<a href="javascript:deli_add();" /><img src="../img/common/btn_delivery_add.png" title="배송지 추가" /></a>
+			</div>
+		</div>
+		<div class="d_list">
+			<table cellpadding="0" cellspacing="0">
+				<colgroup><col width="20%"><col width="*"><col width="20%"><col width="15%"></colgroup>
+				<tr><th colspan="4" class="bordertop"></th></tr>
+				<tr class="input_txt">
+					<th>배송지명/<br />받으실분</th>
+					<th>받으실곳</th>
+					<th>연락처</th>
+					<th>수정/삭제</th>
+				</tr>
+				<tr><th colspan="4" class="borderbtm"></th></tr>
+				<!--{ ? count(list) == 0 }-->
+				<tr>
+					<td colspan="4">데이터가 없습니다.</td>
+				</tr>
+				<!--{ : }-->
+				<!--{ @ list }-->
+				<tr>
+					<td>{.gmd_title}<br />{.gmd_name}</td>
+					<td style="text-align:left;">
+						{.gmd_zonecode} ({.gmd_zipcode})
+						<!--{?.gmd_default == 'y'}--><span class="delivery_default">기본배송지</span><!--{ / }--><br />
+						<!--{ ? .gmd_road_address }-->
+						{.gmd_road_address}
+						<!--{ : }-->
+						{.gmd_address}
+						<!--{ / }-->
+						<br />{.gmd_address_sub}
+					</td>
+					<td>{.gmd_mobile}<br />{.gmd_phone}</td>
+					<td>
+						<a href="javascript:deli_edit({.gmd_sno});"><img src="../img/common/btn_delivery_edit.png" alt="수정" title="수정" /></a>
+						<a href="javascript:deli_delete({.gmd_sno});"><img src="../img/common/btn_delivery_delete.png" alt="삭제" title="삭제" /></a>
+					</td>
+				</tr>
+				<!--{ / }-->
+				<!--{ / }-->
+			</table>
+		</div>
+	</div>
+</div>
+</form>
+<script type="text/javascript">
+	var mode = "{mode}";
+	var pkind = "{pkind}";
+
+	function deli_add() {
+		location.href="./mydelivery.php?mode=form"+(pkind ? "&pkind="+pkind : "");
+	}
+
+	function deli_edit(sno) {
+		location.href="./mydelivery.php?mode=form&sno="+sno+(pkind ? "&pkind="+pkind : "");
+	}
+
+	function deli_delete(sno) {
+		location.href="./mydelivery_indb.php?mode=delete&sno="+sno+(pkind ? "&pkind="+pkind : "");
+	}
+
+	function deli_list() {
+		location.href="./mydelivery.php?mode=list"+(pkind ? "&pkind="+pkind : "");
+	}
+</script>
