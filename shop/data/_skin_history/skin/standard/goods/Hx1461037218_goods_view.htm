@@ -1,0 +1,198 @@
+{*** 상품상세화면 | goods/goods_view.php ***}
+{ # header }
+<script>
+function chgImg(obj)
+{
+    var objImg = document.getElementById('objImg');
+    if (obj.getAttribute("ssrc")) objImg.src = obj.src.replace(/\/t\/[^$]*$/g, '/')+obj.getAttribute("ssrc");
+    else objImg.src = obj.src.replace("/t/","/");
+    <!--{?detailView=='y'}-->
+    // 디테일뷰 추가내용 2010.11.09
+    if (obj.getAttribute("lsrc")) { 
+        if (obj.getAttribute("lsrc").match( (/^http(s)?:/)) != null) { 
+            objImg.setAttribute("lsrc", obj.getAttribute("lsrc")); 
+        } 
+        else { 
+            objImg.setAttribute("lsrc", obj.src.replace(/\/t\/[^$]*$/g, '/')+obj.getAttribute("lsrc")); 
+        } 
+    }
+    else objImg.setAttribute("lsrc", obj.getAttribute("src").replace("/t/", "/").replace("_sc.", '.'));
+    ImageScope.setImage(objImg, beforeScope, afterScope);
+    // 디테일뷰 추가내용 2010.11.09
+    <!--{/}-->
+}
+</script>
+
+    <main>
+        <!--TYPO3SEARCH_begin-->
+        <!--FRONTEND begin-->
+<div class="product" itemscope="" itemtype="http://schema.org/Product">
+    <div itemprop="brand" itemscope="" itemtype="http://schema.org/Organization">
+        <meta itemprop="name" content="K&#228;rcher">
+    </div>
+    <div itemprop="manufacturer" itemscope="" itemtype="http://schema.org/Organization">
+        <meta itemprop="name" content="Alfred K&#228;rcher Vertriebs-GmbH">
+    </div>
+    <meta itemprop="mpn" content="16019420">
+    <meta itemprop="url" href="#">
+    
+    <div class="modal" id="add-to-basket-modal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><font><font>×</font></font></button>
+                <h4 class="modal-title"><font><font>
+                    다음 항목이 장바구니에 추가되었습니다</font></font></h4>
+            </div>
+            <div class="modal-body"></div>
+        </div>
+    </div>
+</div>
+            <section id="ribbon">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-lg-9">
+                <section class="hidden-print" id="breadcrumbs">
+    <div class="row">
+        <div class="col-sm-12">
+            {=currPosition(_category)}
+        </div>
+    </div>
+</section><h1 itemprop="name"><font><font>
+                    {goodsnm}
+                                    </font></font></h1>
+                                    <p>{shortdesc}</p>
+                            </div>
+        </div>
+    </div>
+</section>    
+    <section class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="row product-stage">
+                <div class="col-sm-7 col-md-8 col-no-padding product-stage-left">
+                    <ul class="product-awards list-no-bullets">
+                                                                        </ul>
+                    <div class="product-image" id="product-stage">
+
+                        {=goodsimg(r_img[0],0,'id=objImg')}
+                                            </div>
+                                            <div class="product-imagerail">
+                            <ul>
+                                <!--{ @ t_img }-->
+                                <li>
+{=goodsimg(.value_,0,"onmouseover='chgImg(this)' class=hand style='border-width:1; border-style:solid; border-color:#cccccc'")}
+        </li>
+
+
+<!--{ / }-->
+                   
+    </ul>                        </div>
+                                    </div>
+				
+               
+<div id="goods_spec" class="col-sm-5 col-md-4 product-box-container">
+					<form name=frmView method=post onsubmit="return false">
+						<div class="product-box product-salesdata" style="border-bottom:none;">    
+
+					                <div class="product-priceinfo">
+제품명 : {goodsnm}
+        </div>
+					<div class="product-price">판매가 : 
+            <span class="product-price-singleprice"><font><font>
+                {=number_format(price)}원
+            </font></font></span>
+                                </div>
+                <div class="product-priceinfo">
+배송방법 : {delivery_method}
+        </div>
+        <div class="product-priceinfo">
+            <!--{ ? delivery_type == 1 }-->
+	배송비 : 무료배송
+	<!--{ : delivery_type == 2 }-->
+	개별배송비 : {=number_format(goods_delivery)}원
+	<!--{ : delivery_type == 3 }-->
+	착불배송비 : {=number_format(goods_delivery)}원
+	<!--{ : delivery_type == 4 }-->
+	고정배송비 : {=number_format(goods_delivery)}원
+	<!--{ : delivery_type == 5 }-->
+	수량별배송비 : {=number_format(goods_delivery)}원 (수량에 따라 배송비가 추가됩니다.)
+			<!--{ / }-->
+</div>
+    
+
+<div class="product-priceinfo">
+    제품코드 : {goodscd}
+</div>
+
+
+<p><a class="btn btn-yellow btn-block btn-uppercase" href="#">
+                    바로구매
+                </a></p>
+            <p><a class="btn btn-yellow btn-block btn-uppercase" href="javascript:cartAdd(frmView,'{ cartCfg->redirectType }')">
+                    장바구니
+                </a></p>
+        </div>
+						<input type=hidden name=mode value="addItem">
+<input type=hidden name=goodsno value="{goodsno}">
+<input type=hidden name=goodsCoupon value="{coupon}">
+					</form>
+        </div>
+                                            
+                </div>
+            </div>
+        </div>
+</section>
+            <div class="container">
+    
+</div>    
+    
+<div class="affix-placeholder" style="height: 77px;"></div>
+
+
+<section class="container">
+                                    <div class="row" id="description">
+    <div class="col-sm-12">
+{longdesc}
+    </div>
+</div>            
+</section>
+		
+		<section class="container">
+<div class="row" id="detergents">
+    <div class="col-sm-12">
+        <h5 class="section-headline"><font><font>호환가능제품</font></font></h5>
+        <div class="product-list">
+            <div id="detergents_pages" class="kaercher-product-filter-target">
+                <div class="pagination-page">
+                    <div class="row">
+						<!--{ @ dataGoodsRelation( goodsno, 100 ) }-->
+						<div class="col-sm-3 col-xs-6 product-item product-reference" style="padding-bottom:5px">
+                            <a itemprop="url" href="goods_view.php?goodsno={.goodsno}" target="_blank">
+                                <div class="product-reference-image">
+                                    {=goodsimg(.img_s,200)}
+                                </div>
+                                <div class="product-reference-info">
+                                    <h6 itemprop="name"><font>{.goodsnm}</font></h6>
+                                    
+                                    <div class="product-price2"><span itemprop="price" content="3683">
+										<font>{=number_format(.price)}</font></span> 
+										<span itemprop="priceCurrency"><font><font>원</font></font></span></div>
+                                </div>
+                            </a>
+                            
+                        </div>
+                        <!--{ / }-->
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+        </div>
+    </div>        
+</section>
+        <!--TYPO3SEARCH_end-->
+    <div class="modal fade" id="video-modal" tabindex="-1"><div class="modal-dialog"><div class="close" data-dismiss="modal"></div><div id="video-modal-content"></div></div></div></main>
+    <div class="to-top hidden-print" style="bottom: -50px; opacity: 0;"><span class="glyphicon glyphicon-upload"></span></div>
+
+{ # footer }

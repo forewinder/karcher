@@ -1,0 +1,6 @@
+<? 
+$partner = array( 
+'nv_pcard' => '»ï¼º3/Çö´ë6/±¹¹Î12', 
+'naver_version' => '2', 
+) 
+;?>

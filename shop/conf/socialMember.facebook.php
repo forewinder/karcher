@@ -1,0 +1,1 @@
+a:4:{s:5:"useyn";s:1:"y";s:11:"useAdvanced";s:1:"n";s:5:"appID";N;s:13:"appSecretCode";N;}

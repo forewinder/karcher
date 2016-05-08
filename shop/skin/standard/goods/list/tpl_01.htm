@@ -1,0 +1,28 @@
+{*** 갤러리형 | goods/goods_list.php ***}
+<!--{ ? !id }--><? {id} = "es_".md5(crypt('')); ?><!--{ / }-->
+<!-- 상품 리스트 -->
+	<!--{ @ loop }-->
+
+<div class="col-sm-3 col-xs-6 product-item">
+                    <div class="product-image image-fit">
+                                                    <a itemprop="url" href="{.goods_view_url}">{=goodsimg(.img_s,size,'class="'+ .css_selector +'"')}</a>
+                                            </div>
+                    <div class="product-info" itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
+                        <link itemprop="availability" href="http://schema.org/InStock">
+                        <h6 class="product-label"><a href="{.goods_view_url}" itemprop="url"><span itemprop="name"><font><font>{.goodsnm}</font></font></span></a></h6>
+                        <div class="product-compare">
+                            
+                        </div>
+                        <div class="product-price2"><span itemprop="price" content="62618"><font><font>{=number_format(.price)} </font></font></span> <span itemprop="priceCurrency" content="JPY"><font><font>원</font></font></span><font><font> </font></font></div>
+
+                    </div>
+                    <div class="product-actions hidden-print">
+                        <div class="product-shoppable" style="">
+                            <a href="{.goods_view_url}" class="col-xs-12 btn btn-flatyellow btn-uppercase"><font><font>상세보기 </font></font></a>
+                        </div>
+                    </div>
+                </div>                
+
+
+
+	<!--{ / }-->

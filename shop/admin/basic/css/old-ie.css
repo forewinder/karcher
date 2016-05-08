@@ -1,0 +1,25 @@
+/*
+	고도몰 샵 관리자 로그인 css 입니다.
+	ie7/ie8 크로스브라우징 스타일 재정의 css 입니다.
+	작성자 : 류인상
+	최초작성 : 2015.09.14
+*/
+@charset "euc-kr";
+
+.login {
+	*display:inline;
+	*zoom:1;
+}
+.login h1 strong {
+	top:10px;
+	background:url('../../img/login/bar-1x24-b1b2b2.gif') no-repeat left 5px;
+}
+.login .support label {
+	background:url('../../img/login/bar-1x11-999.gif') no-repeat right 2px;
+}
+.bottom .upgrade ul li {
+	background:url('../../img/login/bl-2x2-595959.gif') no-repeat left 10px;
+}
+.bottom .upgrade ul li img {
+	*vertical-align:middle;
+}

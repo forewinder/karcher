@@ -1,0 +1,370 @@
+{*** 상품상세화면 | goods/goods_view.php ***}
+{ # header }
+<script>
+function chgImg(obj)
+{
+    var objImg = document.getElementById('objImg');
+    if (obj.getAttribute("ssrc")) objImg.src = obj.src.replace(/\/t\/[^$]*$/g, '/')+obj.getAttribute("ssrc");
+    else objImg.src = obj.src.replace("/t/","/");
+    <!--{?detailView=='y'}-->
+    // 디테일뷰 추가내용 2010.11.09
+    if (obj.getAttribute("lsrc")) { 
+        if (obj.getAttribute("lsrc").match( (/^http(s)?:/)) != null) { 
+            objImg.setAttribute("lsrc", obj.getAttribute("lsrc")); 
+        } 
+        else { 
+            objImg.setAttribute("lsrc", obj.src.replace(/\/t\/[^$]*$/g, '/')+obj.getAttribute("lsrc")); 
+        } 
+    }
+    else objImg.setAttribute("lsrc", obj.getAttribute("src").replace("/t/", "/").replace("_sc.", '.'));
+    ImageScope.setImage(objImg, beforeScope, afterScope);
+    // 디테일뷰 추가내용 2010.11.09
+    <!--{/}-->
+}
+</script>
+
+    <main>
+        <!--TYPO3SEARCH_begin-->
+        <!--FRONTEND begin-->
+<div class="product" itemscope="" itemtype="http://schema.org/Product">
+    <div itemprop="brand" itemscope="" itemtype="http://schema.org/Organization">
+        <meta itemprop="name" content="K&#228;rcher">
+    </div>
+    <div itemprop="manufacturer" itemscope="" itemtype="http://schema.org/Organization">
+        <meta itemprop="name" content="Alfred K&#228;rcher Vertriebs-GmbH">
+    </div>
+    <meta itemprop="mpn" content="16019420">
+    <meta itemprop="url" href="#">
+    
+    <div class="modal" id="add-to-basket-modal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><font><font>×</font></font></button>
+                <h4 class="modal-title"><font><font>
+                    다음 항목이 장바구니에 추가되었습니다</font></font></h4>
+            </div>
+            <div class="modal-body"></div>
+        </div>
+    </div>
+</div>
+            <section id="ribbon">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-lg-9">
+                <section class="hidden-print" id="breadcrumbs">
+    <div class="row">
+        <div class="col-sm-12">
+            {=currPosition(_category)}
+        </div>
+    </div>
+</section><h1 itemprop="name"><font><font>
+                    {goodsnm}
+                                    </font></font></h1>
+                                    <p>{shortdesc}</p>
+                            </div>
+        </div>
+    </div>
+</section>    
+    <section class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="row product-stage">
+                <div class="col-sm-7 col-md-8 col-no-padding product-stage-left">
+                    <ul class="product-awards list-no-bullets">
+                                                                        </ul>
+                    <div class="product-image" id="product-stage">
+
+                        {=goodsimg(r_img[0],0,'id=objImg')}
+                                            </div>
+                                            <div class="product-imagerail">
+                            <ul>
+                                <!--{ @ t_img }-->
+                                <li>
+{=goodsimg(.value_,0,"onmouseover='chgImg(this)' class=hand style='border-width:1; border-style:solid; border-color:#cccccc'")}
+        </li>
+
+
+<!--{ / }-->
+                   
+    </ul>                        </div>
+                                    </div>
+                <div class="col-sm-5 col-md-4 product-box-container">
+                작업중
+                    <!-- <div class="product-box product-salesdata" itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">    
+
+                        <div class="product-price">
+            <span class="product-price-singleprice"><font><font>
+                62,618 엔 *
+            </font></font></span>
+                                </div>
+    
+
+
+        
+
+
+                <div class="product-priceinfo" itemprop="priceSpecification">
+            <p><font><font>세금 포함 가격 ( </font></font><a href="#" target="_self"><font><font>배송료 별도</font></font></a><font><font> )</font></font></p>
+        </div>
+        <div class="product-availability"><font><font>
+            배송 :
+             </font></font><link itemprop="availability" href="http://schema.org/InStock"><font><font>
+            배송까지 2-3 일
+        </font></font></div>
+    
+
+<div class="product-priceinfo"><font><font>
+    주문 번호 :
+     </font></font><span itemprop="mpn"><font><font>1.601-942.0</font></font></span>
+</div>
+
+
+                <div class="product-addtocart hidden-print" data-tnr="16019420" data-basket-initiated="true">
+            <p><a class="btn btn-yellow btn-block btn-uppercase" href="#"><span class="icon icon-shop"></span><font><font>
+                    장바구니
+                </font></font></a></p>
+        </div>
+    
+
+
+        </div>
+                                            <div class="product-box">
+                            <ul class="list-arrows product-functions">
+                                <li><a href="#" class="product-addtocompare" rel="nofollow"><font><font>비교하기</font></font></a>
+                                </li>
+                            </ul>
+                        </div>
+                    <div class="product-box">
+                                            </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+            <div class="container">
+    
+</div>    
+    
+</nav><div class="affix-placeholder" style="height: 77px;"></div>
+
+<section class="container">
+<div class="row" id="detergents">
+    <div class="col-sm-12">
+        <h5 class="section-headline"><font><font>호환가능제품</font></font></h5>
+        <div class="product-list">
+            <div id="detergents_pages" class="kaercher-product-filter-target">
+                <div class="pagination-page">
+                    <div class="row">
+						<!--{ @ dataGoodsRelation( goodsno, 100 ) }-->
+						<div class="col-sm-3 col-xs-6 product-item product-reference" style="padding-bottom:5px">
+                            <a itemprop="url" href="goods_view.php?goodsno={.goodsno}" target="_blank">
+                                <div class="product-reference-image">
+                                    {=goodsimg(.img_s,200)}
+                                </div>
+                                <div class="product-reference-info">
+                                    <h6 itemprop="name"><font><font>RM 스프레이 병</font></font></h6>
+                                    
+                                    <div class="product-price2" itemprop="offers" itemscope="" itemtype="http://schema.org/Offer"><span itemprop="price" content="3683"><font>{=number_format(.price)}</font></span> <span itemprop="priceCurrency"><font><font>원</font></font></span></div>
+                                </div>
+                            </a>
+                            
+                        </div>
+                        <!--{ / }-->
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+        </div>
+    </div>
+</div>        
+</section>
+    <section class="container">
+                                    <div class="row" id="description" data-anchor="製品紹介">
+    <div class="col-sm-12">
+        <p itemprop="description"><font><font>주택가에서도 이웃에 스스럼없이 사용할 수냉식 저소음 타입의 고압 세척기입니다. </font><font>우리 동급 모델에 비해 체감 소음은 약 절반이되었습니다. </font><font>또한 수냉식으로 된 것으로 내구성이 향상되었습니다. </font><font>넓은 범위도 제대로 빨 12m의 고압 호스 포함입니다. </font><font>테라스 청소기와 청소기가 붙은 홈 키트, 또한 양식 노즐 회전 브러시 자동차 키트가 세트. </font><font>&lt;수냉식 저소음 타입&gt; </font><font>세계 최초의 수냉식 모터 채용으로 체감 소음은 약 절반 (당사 동등 모델과의 비교)되었습니다. </font><font>이제는 주택가도 스스럼없이 고압 세척 할 수 있습니다. </font><font>&lt;2 개의 표준 노즐&gt; </font><font>바리오스 뿌레 란스 ... 압력의 조정이 있기 때문에, 방충망이나 세차 등 여러가지 장소의 청소에 적합합니다. </font><font>사이클론 제트 노즐 ... 고압의 물을 회전시키면서 분사하기 때문에, 외벽 등의 완고한 얼룩도 떨어 뜨릴 수 있습니다. </font><font>&lt;쉽게 연결&gt; </font><font>고압 호스를 연결할 때 원터치로 연결할 수 있기 때문에 준비가 쉽고 빠르게 할 수 있습니다. </font><font>&lt;안심 오래&gt; </font><font>수냉식 모터 채용으로 내구성이 향상되었고, 오랫동안 사용하실 수 있습니다 (당사 동등 모델과 비교). </font><font>따라서 메이커 보증 3 년 장기 보증합니다. </font><font>&lt;홈 키트 &amp; 자동차 키트&gt; </font><font>테라스 클리너 T 350 세정제 (범용 세제) 폼 노즐, 회전 브러쉬 세트. </font><font>테라스 청소기는 물 얼룩을 방지 문앞이나 테라스 등의 청소에 편리합니다. </font><font>연장 랜스를 사용하면 높은 곳의 청소 고압 세척도 할 수 있습니다. </font><font>폼 노즐은 세제를 거품 모양으로 분사 할 수 있고 또한 회전 브러시 절대로 세차 유용합니다. </font><font>※ 수도 호스는 포함되어 있지 않습니다. </font><font>가정 / 상용 호스 또는 액세서리 페이지에서 "3m 수도 호스 세트"를 구입하십시오. </font><font>※ 조립 시간 기준으로 20 분 정도 소요됩니다.</font></font><br><br><font></font><br><font></font><br><font></font><br><font></font><br><font></font><br><font></font><br><font></font><br><font></font><br><font></font><br><font></font><br><font></font><br><br><font></font><br><font></font></p>
+    </div>
+</div>            
+                            <div id="featurebenefits" data-anchor="製品特長">
+    <h5 class="section-headline"><p><font><font>제품 특징</font></font></p></h5>
+            <div class="row">
+            <div class="col-sm-12">
+                <table class="table">
+                                            <tbody><tr>
+                            <td><font><font>빠른 연결 시스템</font></font></td>
+                            <td>
+                                                                    <ul>
+                                                                                    <li><font><font>고압 호스의 연결이 쉽습니다.</font></font></li>
+                                                                            </ul>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <td><font><font>안전 밸브 및 모터 정지 기능</font></font></td>
+                            <td>
+                                                                    <ul>
+                                                                                    <li><font><font>부하로부터 보호합니다.</font></font></li>
+                                                                            </ul>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <td><font><font>노즐 수납 홀더 (본체)</font></font></td>
+                            <td>
+                                                                    <ul>
+                                                                                    <li><font><font>노즐을 넣을 수 있습니다.</font></font></li>
+                                                                            </ul>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <td><font><font>사이클론 제트 노즐</font></font></td>
+                            <td>
+                                                                    <ul>
+                                                                                    <li><font><font>사이클론 제트 노즐은 광각 노즐의 80 % 증가의 위력이 있습니다.</font></font></li>
+                                                                            </ul>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <td><font><font>테라스 청소기</font></font></td>
+                            <td>
+                                                                    <ul>
+                                                                                    <li><font><font>넓은면의 청소에 편리합니다. </font><font>압력 조정이 있기 때문에 완고한 얼룩도 섬세한면의 얼룩도 소재를 손상시키지 않고 세척 할 수 있습니다.</font></font></li>
+                                                                            </ul>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <td><font><font>범용 세제</font></font></td>
+                            <td>
+                                                                    <ul>
+                                                                                    <li><font><font>집과 정원 주변 청소 등 다양한 얼룩에 효과적인 다목적 세제입니다.</font></font></li>
+                                                                            </ul>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <td><font><font>바리오스 뿌레 란스</font></font></td>
+                            <td>
+                                                                    <ul>
+                                                                                    <li><font><font>압력 조정이 가능한 광각 노즐입니다.</font></font></li>
+                                                                            </ul>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <td><font><font>저소음 모델</font></font></td>
+                            <td>
+                                                                    <ul>
+                                                                                    <li><font><font>모터 소리를 50 % 인하했습니다.</font></font></li>
+                                                                            </ul>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <td><font><font>수냉식 저소음 모터</font></font></td>
+                            <td>
+                                                                    <ul>
+                                                                                    <li><font><font>강력하지만 조용한 모터입니다.</font></font></li>
+                                                                            </ul>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <td><font><font>필터</font></font></td>
+                            <td>
+                                                                    <ul>
+                                                                                    <li><font><font>펌프 내부에 이물질이 침입하는 것을 방지합니다.</font></font></li>
+                                                                            </ul>
+                                                            </td>
+                        </tr>
+                                    </tbody></table>
+            </div>
+        </div>
+    </div>            
+                            <div class="row" id="specifications" data-anchor="製品仕&#27096;">
+    <div class="col-sm-12">
+        <h5 class="section-headline"><p><font><font>제품 사양</font></font></p></h5>
+        <div class="row">
+            <div class="col-sm-6">
+                <h3><p><font><font>제품 스펙</font></font></p></h3>
+                <table class="table">
+                                                                        <tbody><tr>
+                                <td><font><font>최대 토출 압력 (MPa)                                </font></font></td>
+                                <td><font><font>
+                                                                            최대 12
+                                                                    </font></font></td>
+                            </tr>
+                                                                                                <tr>
+                                <td><font><font>토출 수량 (L / h)                                </font></font></td>
+                                <td><font><font>
+                                                                            최대 430
+                                                                    </font></font></td>
+                            </tr>
+                                                                                                <tr>
+                                <td><font><font>최고 급수 온도 (° C)                                </font></font></td>
+                                <td><font><font>
+                                                                            40
+                                                                    </font></font></td>
+                            </tr>
+                                                                                                <tr>
+                                <td><font><font>전압 (V)                                </font></font></td>
+                                <td><font><font>
+                                                                            100
+                                                                    </font></font></td>
+                            </tr>
+                                                                                                <tr>
+                                <td><font><font>모터 출력 (kW)                                </font></font></td>
+                                <td><font><font>
+                                                                            1,4
+                                                                    </font></font></td>
+                            </tr>
+                                                                                                <tr>
+                                <td><font><font>질량 (본체 만) (kg)                                </font></font></td>
+                                <td><font><font>
+                                                                            16,6
+                                                                    </font></font></td>
+                            </tr>
+                                                                                                <tr>
+                                <td><font><font>치수 (길이 × 폭 × 높이) (mm)                                </font></font></td>
+                                <td><font><font>
+                                                                            349 x 426 x 878
+                                                                    </font></font></td>
+                            </tr>
+                                                            </tbody></table>
+            </div>
+                            <div class="col-sm-6">
+                    <h3><p><font><font>표준 액세서리 및 제품 기능</font></font></p></h3>
+                    <ul>
+                                                    <li><font><font>
+                                테라스 클리너, T 350                             </font></font></li>
+                                                    <li><font><font>
+                                회전 브러시                            </font></font></li>
+                                                    <li><font><font>
+                                폼 노즐, 0,3 l                             </font></font></li>
+                                                    <li><font><font>
+                                세제, 범용 세제 1L                             </font></font></li>
+                                                    <li><font><font>
+                                트리거 건 쉽게 원터치 연결                             </font></font></li>
+                                                    <li><font><font>
+                                바리오스 뿌레 란스                            </font></font></li>
+                                                    <li><font><font>
+                                사이클론 제트 노즐                            </font></font></li>
+                                                    <li><font><font>
+                                고압 호스 12 m                             </font></font></li>
+                                                    <li><font><font>
+                                빠른 연결 연결 (본체)                            </font></font></li>
+                                                    <li><font><font>
+                                세제 살포 플러그 앤 클린 시스템                             </font></font></li>
+                                                    <li><font><font>
+                                수냉식 모터                            </font></font></li>
+                                                    <li><font><font>
+                                필터 (본체 내부 장착)                            </font></font></li>
+                                                    <li><font><font>
+                                본체 측 커플 링                            </font></font></li>
+                                            </ul>
+                </div>
+                    </div>
+    </div>
+</div>            
+                            
+                    
+</section>
+        <!--TYPO3SEARCH_end-->
+    <div class="modal fade" id="video-modal" tabindex="-1"><div class="modal-dialog"><div class="close" data-dismiss="modal"></div><div id="video-modal-content"></div></div></div></main>
+    <div class="to-top hidden-print" style="bottom: -50px; opacity: 0;"><span class="glyphicon glyphicon-upload"></span></div>
+
+{ # footer }
